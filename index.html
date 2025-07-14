@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!-- Chosen Palette: Custom Calm & Harmonious (Background: #f8f9fa, Text: #343a40, Primary Accent: #4a90e2, Positive/Accent: #50b89f, Problem/Warning: #dc3545, Card: #ffffff) -->
+<!-- Application Structure Plan: The SPA is structured as a narrative flow, presenting the ZI transformation journey. It starts with an overall introduction, then delves into two main pillars: "Pilar Budaya Kerja" and "Wajah Baru Pelayanan Publik". Each pillar section details the "Sebelum" (Before) state, the "Solusi/Terobosan" (Solution/Breakthrough), and the "Dampak/Hasil" (Impact/Result), including relevant charts and visual elements. This linear, thematic structure is chosen to guide the user through the story of transformation, making complex information digestible and impactful. -->
+<!-- Visualization & Content Choices:
+- General Text: HTML <p> for narrative and explanations.
+- Problem Statements: Cards with problem icons to highlight challenges.
+- Solutions/Programs: Cards with descriptive text and icons.
+- ONMADA Impact: Bar Chart (Chart.js) to show hypothetical "Indeks Efektivitas Penghargaan" before and after, illustrating the significant impact on motivation.
+- PPID Transformation Flow: Structured HTML/CSS (Tailwind flexbox, rounded cards, Unicode arrows) to visually represent the step-by-step transformation process.
+- IKK Increase: Bar Chart (Chart.js) to clearly show the Consumer Satisfaction Index (IKK) increase from 2023 to 2024.
+- KIP Award: Dedicated card with a prominent award icon to emphasize the prestigious recognition.
+- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis: Transformasi Zona Integritas BPS Sumatera Utara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light background */
+            color: #343a40; /* Dark charcoal text */
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .header-bg {
+            background-color: #4a90e2; /* Medium blue */
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .icon-large {
+            font-size: 3rem;
+            line-height: 1;
+            color: #4a90e2; /* Medium blue for icons */
+        }
+        .text-accent {
+            color: #50b89f; /* Soft green accent */
+        }
+        .text-problem {
+            color: #dc3545; /* Red for problems */
+        }
+        .flow-step {
+            border: 2px solid #a0c4ff; /* Lighter blue border */
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #4a90e2; /* Medium blue for arrows */
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app" class="min-h-screen flex flex-col">
+        <header class="header-bg text-white text-center py-12 px-4">
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-wide">Transformasi Zona Integritas BPS Sumatera Utara</h1>
+            <p class="mt-3 text-lg md:text-xl max-w-3xl mx-auto opacity-90">Mengukir Kisah Inspiratif Birokrasi Bersih, Akuntabel, dan Berkinerja Tinggi</p>
+        </header>
+
+        <main class="flex-grow container mx-auto px-4 py-12">
+
+            <section id="pendahuluan" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8">Pendahuluan: Komitmen Mendalam Menuju ZI</h2>
+                <p class="text-center max-w-4xl mx-auto text-lg leading-relaxed">
+                    Di tengah hiruk pikuk pembangunan, BPS Sumatera Utara telah mengukir sebuah kisah transformasi yang inspiratif. Perjalanan menuju Zona Integritas (ZI) ini bukan sekadar target, melainkan sebuah komitmen mendalam untuk menghadirkan birokrasi yang bersih, akuntabel, dan berkinerja tinggi. Mari kita telusuri transformasi ini melalui sorotan-sorotan kunci yang akan kita pelajari bersama.
+                </p>
+            </section>
+
+            <section id="pilar-budaya-kerja" class="mb-16">
+                <h2 class="text-3xl font-bold text-center text-[#4a90e2] mb-8">Pilar Budaya Kerja yang Mengubah</h2>
+                <p class="text-center max-w-3xl mx-auto mb-12">
+                    Transformasi dimulai dari fondasi yang paling mendasar: budaya kerja. Dahulu, sistem penghargaan bagi pegawai mungkin terasa subjektif dan kurang terstruktur, membuat motivasi kadang meredup.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="card text-center">
+                        <p class="icon-large mb-4 text-problem">😔</p>
+                        <h3 class="font-bold text-xl mb-2 text-problem">Sistem Penghargaan Subjektif</h3>
+                        <p class="text-gray-700">Penilaian dan pemberian penghargaan bagi pegawai terasa kurang objektif dan tidak terstruktur dengan baik.</p>
+                    </div>
+                    <div class="card text-center">
+                        <p class="icon-large mb-4 text-problem">📉</p>
+                        <h3 class="font-bold text-xl mb-2 text-problem">Motivasi yang Meredup</h3>
+                        <p class="text-gray-700">Kurangnya struktur dan objektivitas dalam penghargaan kadang membuat motivasi pegawai cenderung meredup.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-center text-[#50b89f] mb-8">Solusi Inovatif: ONMADA (Outstanding Minds and Achievement Awards)</h3>
+                <p class="text-center max-w-4xl mx-auto mb-12 text-lg leading-relaxed">
+                    BPS Sumatera Utara bertekad mengubahnya. Diperkenalkan sebuah program inovasi yang secara spesifik dirancang untuk mengubah sistem penghargaan pegawai dari yang sebelumnya subjektif menjadi lebih objektif dan terukur berbasis kinerja. Program ini adalah **ONMADA (Outstanding Minds and Achievement Awards)**.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="card p-6">
+                        <h3 class="font-bold text-2xl mb-4 text-accent">Bagaimana ONMADA Bekerja?</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Penilaian Objektif:** Menggunakan formula penilaian yang jelas dan terukur.</li>
+                            <li>**Berbasis Kinerja:** Penghargaan didasarkan pada pencapaian kinerja nyata pegawai.</li>
+                            <li>**Pemberian Rutin:** Dilakukan secara berkala untuk menjaga konsistensi dan motivasi.</li>
+                            <li>**Transparansi:** Proses yang terbuka dan dapat dipertanggungjawabkan.</li>
+                        </ul>
+                    </div>
+                    <div class="card p-6 text-center">
+                        <p class="icon-large mb-4">✨</p>
+                        <h3 class="font-bold text-xl mb-2 text-accent">Meningkatkan Motivasi Signifikan</h3>
+                        <p class="text-gray-700">ONMADA secara langsung mengatasi masalah penghargaan yang tidak terstruktur, sehingga berhasil meningkatkan motivasi pegawai secara signifikan.</p>
+                    </div>
+                </div>
+                <div class="card mt-12">
+                    <h3 class="font-bold text-xl text-center mb-4">Dampak Terukur: Peningkatan Efektivitas Penghargaan</h3>
+                    <div class="chart-container">
+                        <canvas id="effectivenessChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        *Data hipotetis menunjukkan peningkatan signifikan setelah implementasi ONMADA.
+                    </p>
+                </div>
+            </section>
+
+            <hr class="border-gray-300 my-16">
+
+            <section id="pelayanan-publik" class="my-16">
+                <h2 class="text-3xl font-bold text-center text-[#4a90e2] mb-8">Wajah Baru Pelayanan Publik</h2>
+                <p class="text-center max-w-3xl mx-auto mb-12">
+                    Layanan publik adalah cerminan wajah instansi. BPS Sumatera Utara memahami betul hal ini. Ada masa ketika unit PPID (Pusat Pengelolaan Informasi dan Dokumentasi) belum memiliki struktur yang jelas, bahkan ruangannya pun tidak ada, dan belum pernah dievaluasi oleh Komisi Informasi Provinsi Sumatera Utara.
+                </p>
+
+                <h3 class="text-2xl font-bold text-center text-[#50b89f] mb-8">Terobosan: Membangun PPID Fungsional</h3>
+                <p class="text-center max-w-4xl mx-auto mb-12 text-lg leading-relaxed">
+                    Namun, komitmen pimpinan mengubah segalanya. Transformasi paling menonjol pada unit PPID BPS Sumatera Utara yang berujung pada perolehan penghargaan tertinggi dari Komisi Informasi adalah **Membangun unit PPID dari yang tidak terstruktur menjadi lembaga fungsional dengan ruang, petugas terlatih, SOP, dan website dengan data update**.
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center mb-12">
+                    <div class="flow-step rounded-lg p-4 flex-grow">
+                        <h4 class="font-bold text-[#4a90e2]">Sebelum</h4>
+                        <p class="text-sm text-gray-700">PPID tidak terstruktur & tanpa ruang fisik.</p>
+                    </div>
+                    <div class="flow-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                    <div class="flow-step rounded-lg p-4 flex-grow">
+                        <h4 class="font-bold text-[#4a90e2]">Intervensi</h4>
+                        <p class="text-sm text-gray-700">Komitmen pimpinan, ruang baru, petugas terlatih, SOP & website.</p>
+                    </div>
+                    <div class="flow-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                    <div class="flow-step rounded-lg p-4 flex-grow bg-[#e9d8a6]">
+                        <h4 class="font-bold text-[#ca6702]">Hasil</h4>
+                        <p class="text-sm font-semibold text-[#ca6702]">Penghargaan Instansi Vertikal Terinformatif dari Komisi Informasi.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-center text-[#50b89f] mb-8">Dampak Kuantitatif: Kepuasan Konsumen Meningkat</h3>
+                <p class="text-center max-w-4xl mx-auto mb-12 text-lg leading-relaxed">
+                    Dampak transformasi ini terasa langsung oleh masyarakat. Berdasarkan data yang disajikan, dampak paling signifikan dari transformasi pelayanan publik di BPS Sumatera Utara terhadap kepuasan konsumen adalah **IKK (Indeks Kepuasan Konsumen) meningkat dari 95.66 pada tahun 2023 menjadi 97.58 pada tahun 2024**.
+                </p>
+                <div class="card">
+                    <h3 class="font-bold text-xl text-center mb-4">Indeks Kepuasan Konsumen (IKK)</h3>
+                    <div class="chart-container">
+                        <canvas id="ikkChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        Angka ini secara akurat mencerminkan peningkatan Indeks Kepuasan Konsumen yang signifikan setelah berbagai perbaikan layanan publik diimplementasikan.
+                    </p>
+                </div>
+            </section>
+
+            <section id="kesimpulan" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8">Kesimpulan: Perjalanan Menuju Keunggulan</h2>
+                <p class="text-center max-w-4xl mx-auto text-lg leading-relaxed">
+                    Transformasi Zona Integritas BPS Sumatera Utara adalah bukti nyata komitmen untuk menghadirkan birokrasi yang bersih, akuntabel, dan berkinerja tinggi. Melalui penguatan budaya kerja dan revolusi pelayanan publik, BPS Sumatera Utara terus mengukir prestasi dan memberikan dampak positif bagi masyarakat.
+                </p>
+            </section>
+
+        </main>
+
+        <footer class="bg-gray-800 text-white text-center py-8">
+            <p>&copy; 2025 BPS Provinsi Sumatera Utara. Berkomitmen pada data, berdedikasi untuk pelayanan.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartTooltip = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            };
+
+            // Chart for ONMADA Effectiveness (Hypothetical Data)
+            const effectivenessCtx = document.getElementById('effectivenessChart').getContext('2d');
+            new Chart(effectivenessCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Sebelum ONMADA', 'Setelah ONMADA'],
+                    datasets: [{
+                        label: 'Indeks Efektivitas Penghargaan (Skala 0-100)',
+                        data: [60, 85], /* Hypothetical data */
+                        backgroundColor: [
+                            'rgba(74, 144, 226, 0.6)', /* Medium blue for before */
+                            'rgba(80, 184, 159, 0.8)' /* Soft green for after */
+                        ],
+                        borderColor: [
+                            '#4a90e2',
+                            '#50b89f'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                color: '#343a40'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#343a40',
+                                callback: function(value, index, values) {
+                                    const label = this.getLabelForValue(value);
+                                    if (label.length > 16) {
+                                        return label.split(' ');
+                                    }
+                                    return label;
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Chart for IKK
+            const ikkCtx = document.getElementById('ikkChart').getContext('2d');
+            new Chart(ikkCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2023', '2024'],
+                    datasets: [{
+                        label: 'Indeks Kepuasan Konsumen (IKK)',
+                        data: [95.66, 97.58],
+                        backgroundColor: [
+                            'rgba(74, 144, 226, 0.6)', /* Medium blue for 2023 */
+                            'rgba(80, 184, 159, 0.8)' /* Soft green for 2024 */
+                        ],
+                        borderColor: [
+                            '#4a90e2',
+                            '#50b89f'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 94, /* Set min to highlight change */
+                            max: 100,
+                            ticks: {
+                                color: '#343a40'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#343a40'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
